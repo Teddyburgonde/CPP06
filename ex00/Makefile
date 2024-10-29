@@ -1,6 +1,6 @@
 #=================== NAME ===================#
 
-NAME = ScalarConverter
+NAME = convert
 
 #================ COMPILATOR ================#
 
