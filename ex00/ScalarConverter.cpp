@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 18:22:29 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:11:22 by teddybandam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,23 @@ ScalarConverter const & ScalarConverter::operator=(ScalarConverter const &rhs)
 */
 void	ScalarConverter::is_char(char c)
 {
-	"f."
-	"."
 	std::cout << "Value in char : '" << c << "'" << std::endl;
 	std::cout << "Value in int : " <<static_cast<int>(c) << std::endl;
-	// Value in float : 
-	// Value in double : 
+	std::cout << "Value in float :" <<static_cast<float>(c) << "f." << std::endl;
+	std::cout << "Value in double " <<static_cast<double>(c) << "." << std::endl;
 }
 
 void	ScalarConverter::is_int(long int nb)
 {
-	if (nb> INT_MAX || nb < INT_MIN)
+	// char
+	// int 
+	// float 
+	// double
+	if (nb > INT_MAX || nb < INT_MIN)
 	{
-		std::cerr << "Value not authorized" << std::endl;			
-		return ;
+		std::cerr << "Value in int :		Impossible." << std::endl;
 	}
+	else if (!std::isdigit(nb) || )
 	if (std::isdigit(nb))
 	{
 		std::cout << "int: "<< nb << std::endl;
