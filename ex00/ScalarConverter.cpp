@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 12:02:33 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:16:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,38 @@ ScalarConverter const & ScalarConverter::operator=(ScalarConverter const &rhs)
     return (*this);
 }
 
-#include <stdio.h>
 void ScalarConverter::convert(std::string const &literal)
 {
+	double doubleValue;
+	doubleValue = 0;
 	if (!literal[0]) /*Chaine vide*/
 	{
 		std::cerr << "The string is empty" << std::endl;
 		return ;
 	}
+	/*est ce que c'est un cas special*/
+	if (literal.compare("nan") == 0)
+	{
+		doubleValue = 0.0 / 0.0;
+		std::cout << "double: "<< doubleValue << std::endl;
+	}
+	if (literal.compare("-inff") == 0)
+	{
+		doubleValue = -1.0 / 0.0;
+		std::cout << "double: "<< doubleValue << std::endl;
+	}
+	if (literal.compare("+inff") == 0 || literal.compare("inff") == 0)
+	{
+		doubleValue = 1.0 / 0.0;
+		std::cout << "double: "<< doubleValue << std::endl;
+	}
+	if (literal[0] == '0' && literal.length() == 1)
+	{
+		std::cout << "double: "<< "0.0f" << std::endl;
+	}
+	//std::cout << "double: "<< doubleValue << std::endl;
 	/*c'est un char ?*/
-	else if (literal.length() == 1)
+	if (literal.length() == 1)
 	{
 		if (!std::isdigit(literal[0]) && literal[0] >= 32 && literal[0] <= 126)
 		{
@@ -85,7 +107,7 @@ void ScalarConverter::convert(std::string const &literal)
 		floatValue = 0;
 
 		valueNoInt = 0;
-		if (literal.compare("nanf") == 0)
+		if (literal.compare("nan") == 0)
 		{
 			floatValue = 0.0 / 0.0;
 			std::cout << "float: "<< floatValue << std::endl;
@@ -117,33 +139,32 @@ void ScalarConverter::convert(std::string const &literal)
 			std::cout << "float: "<< literal << std::endl;
 		}
 	}
-	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
+	else if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
 	{
-		//std::cout << "DOUBLE: "<< literal[0] << std::endl;
 		double doubleValue;
 
 		doubleValue = 0;
-		if (literal.compare("nanf") == 0)
-		{
-			doubleValue = 0.0 / 0.0;
-			std::cout << "double: "<< doubleValue << std::endl;
-		}
-		else if (literal.compare("-inff") == 0)
-		{
-			doubleValue = -1.0 / 0.0;
-			std::cout << "double: "<< doubleValue << std::endl;
-		}
-		else if (literal.compare("+inff") == 0 || literal.compare("inff") == 0)
-		{
-			doubleValue = 1.0 / 0.0;
-			std::cout << "double: "<< doubleValue << std::endl;
-		}
-		else if (literal[0] == '0' && literal.length() == 1)
-		{
-			std::cout << "double: "<< "0.0f" << std::endl;
-		}
-		else
-			std::cout << "double: "<< doubleValue << std::endl;
+		// if (literal.compare("nan") == 0)
+		// {
+		// 	doubleValue = 0.0 / 0.0;
+		// 	std::cout << "double: "<< doubleValue << std::endl;
+		// }
+		// else if (literal.compare("-inff") == 0)
+		// {
+		// 	doubleValue = -1.0 / 0.0;
+		// 	std::cout << "double: "<< doubleValue << std::endl;
+		// }
+		// else if (literal.compare("+inff") == 0 || literal.compare("inff") == 0)
+		// {
+		// 	doubleValue = 1.0 / 0.0;
+		// 	std::cout << "double: "<< doubleValue << std::endl;
+		// }
+		// else if (literal[0] == '0' && literal.length() == 1)
+		// {
+		// 	std::cout << "double: "<< "0.0f" << std::endl;
+		// }
+		// else
+		// 	std::cout << "double: "<< doubleValue << std::endl;
 	}
 }
 
