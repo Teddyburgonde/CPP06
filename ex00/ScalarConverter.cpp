@@ -6,10 +6,14 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 12:16:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:32:03 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+// string 
+// le bon type
+// cast
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(){}
@@ -26,6 +30,23 @@ ScalarConverter const & ScalarConverter::operator=(ScalarConverter const &rhs)
 	(void)rhs;
     return (*this);
 }
+/*
+		static void	is_char(char c);
+		static void	is_int(long int i);
+		static void	is_float(float f);
+		static void	is_double(double d);
+		static void	is_inf(std::string str);
+		static void	is_nan();
+		static int	check_param(const std::string str);
+
+*/
+void	is_char(char c)
+{
+	if (!std::isdigit(c) && c >= 32 && c <= 126)
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cerr << "char: Non displayable" << std::endl;
+}
 
 void ScalarConverter::convert(std::string const &literal)
 {
@@ -39,6 +60,7 @@ void ScalarConverter::convert(std::string const &literal)
 	/*est ce que c'est un cas special*/
 	if (literal.compare("nan") == 0)
 	{
+		std::cout << "COMPARE NAN" << std::endl;
 		doubleValue = 0.0 / 0.0;
 		std::cout << "double: "<< doubleValue << std::endl;
 	}
@@ -52,22 +74,12 @@ void ScalarConverter::convert(std::string const &literal)
 		doubleValue = 1.0 / 0.0;
 		std::cout << "double: "<< doubleValue << std::endl;
 	}
-	if (literal[0] == '0' && literal.length() == 1)
-	{
-		std::cout << "double: "<< "0.0f" << std::endl;
-	}
+	// if (literal[0] == '0' && literal.length() == 1)
+	// {
+	// 	std::cout << "COMPARE '0'" << std::endl;
+	// 	std::cout << "double: "<< "0.0f" << std::endl;
+	// }
 	//std::cout << "double: "<< doubleValue << std::endl;
-	/*c'est un char ?*/
-	if (literal.length() == 1)
-	{
-		if (!std::isdigit(literal[0]) && literal[0] >= 32 && literal[0] <= 126)
-		{
-			std::cout << "char: " << "'" << literal[0] << "'" << std::endl;
-			return ;
-		}
-		else
-		 	std::cerr << "char: Non displayable" << std::endl;
-	}
 	/*c'est un int ?*/
 	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
 	{
@@ -141,30 +153,11 @@ void ScalarConverter::convert(std::string const &literal)
 	}
 	else if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
 	{
+		std::cout << "DOUBLE "<< std::endl;
 		double doubleValue;
 
 		doubleValue = 0;
-		// if (literal.compare("nan") == 0)
-		// {
-		// 	doubleValue = 0.0 / 0.0;
-		// 	std::cout << "double: "<< doubleValue << std::endl;
-		// }
-		// else if (literal.compare("-inff") == 0)
-		// {
-		// 	doubleValue = -1.0 / 0.0;
-		// 	std::cout << "double: "<< doubleValue << std::endl;
-		// }
-		// else if (literal.compare("+inff") == 0 || literal.compare("inff") == 0)
-		// {
-		// 	doubleValue = 1.0 / 0.0;
-		// 	std::cout << "double: "<< doubleValue << std::endl;
-		// }
-		// else if (literal[0] == '0' && literal.length() == 1)
-		// {
-		// 	std::cout << "double: "<< "0.0f" << std::endl;
-		// }
-		// else
-		// 	std::cout << "double: "<< doubleValue << std::endl;
+		std::cout << "double: "<< doubleValue << std::endl;
 	}
 }
 

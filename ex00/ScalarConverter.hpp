@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 10:59:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:03:45 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class ScalarConverter
 
 	public: /*method*/
 		static void convert(std::string const &literal);
+	
+	public:
+		void	is_char(char c);
 
 };
 
