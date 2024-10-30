@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 10:59:53 by tebandam         ###   ########.fr       */
+/*   Created: 2024/10/30 11:01:14 by tebandam          #+#    #+#             */
+/*   Updated: 2024/10/30 11:14:10 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCARLARCONVERTER_HPP
-# define SCARLARCONVERTER_HPP
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include <stdlib.h>
-
-class ScalarConverter
+int	main(int argc, char **argv)
 {
-	public: /*canonical form*/
-		ScalarConverter();
-		ScalarConverter(ScalarConverter const &cpy);
-		ScalarConverter const &operator=(ScalarConverter const &rhs);
-		~ScalarConverter();
+	if (argc != 2)
+	{
+		std::cerr << "Wrong number arguments" << std::endl;
+		return (1);
+	}
+	ScalarConverter::convert(argv[1]);
+}
 
-	public: /*method*/
-		static void convert(std::string const &literal);
 
-};
 
-#endif 
+/*
+./convert 0
+char: Non displayable
+int: 0
+float: 0.0f
+double: 0.0
+./convert nan
+char: impossible
+int: impossible
+float: nanf
+double: nan
+./convert 42.0f
+char: '*'
+int: 42
+float: 42.0f
+double: 42.0
+*/

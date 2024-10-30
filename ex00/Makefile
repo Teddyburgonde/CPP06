@@ -12,7 +12,8 @@ CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 #================== SOURCES =================#
 
-SRCS =	ScalarConverter.cpp
+SRCS =	ScalarConverter.cpp \
+		main.cpp
 
 #============== OBJECT FILES ================#
 
