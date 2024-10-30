@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 11:30:36 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 12:02:33 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,33 @@ void ScalarConverter::convert(std::string const &literal)
 		else
 		 	std::cerr << "char: Non displayable" << std::endl;
 	}
+	/*c'est un int ?*/
+	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
+	{
+		bool valueNoInt;
+		int	value;
+
+		value = 0;
+		valueNoInt = 0;
+		for(int i = 0; literal[i]; i++)
+		{
+			if (!std::isdigit(literal[i]))
+			{
+				valueNoInt = 1;
+				break;
+			}
+		}
+		if (valueNoInt == 0)
+		{
+			value = atoi(literal.c_str());
+			if (value > 2147483647 || value < -2147483648)
+			{
+				std::cerr << "Value not authorized" << std::endl;			
+				return ;
+			}
+			std::cout << "int: "<< literal << std::endl;
+		}
+	}
 	/*c'est un float ?*/
 	if ((literal[0] == '0') ||
 			(literal[literal.size() - 1] == 'f' && 
@@ -81,13 +108,18 @@ void ScalarConverter::convert(std::string const &literal)
 				break;
 			}
 		}
-		if (valueNoInt == 0)
+		if (literal[0] == '0')
+		{
+			std::cout << "float: "<< "0.0f" << std::endl;
+		}
+		else if (valueNoInt == 0)
 		{
 			std::cout << "float: "<< literal << std::endl;
 		}
 	}
 	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
 	{
+		//std::cout << "DOUBLE: "<< literal[0] << std::endl;
 		double doubleValue;
 
 		doubleValue = 0;
@@ -106,34 +138,12 @@ void ScalarConverter::convert(std::string const &literal)
 			doubleValue = 1.0 / 0.0;
 			std::cout << "double: "<< doubleValue << std::endl;
 		}
-	}
-	/*c'est un int ?*/
-	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
-	{
-		bool valueNoInt;
-		int	value;
-
-		value = 0;
-		valueNoInt = 0;
-		for(int i = 0; literal[i]; i++)
+		else if (literal[0] == '0' && literal.length() == 1)
 		{
-			if (!std::isdigit(literal[i])) /*Attention que cette condition ne bloque pas le reste*/
-			{
-				valueNoInt = 1;
-				break;
-			}
+			std::cout << "double: "<< "0.0f" << std::endl;
 		}
-		if (valueNoInt == 0)
-		{
-			value = atoi(literal.c_str());
-			if (value > 2147483647 || value < -2147483648)
-			{
-				std::cerr << "Value not authorized" << std::endl;			
-				return ;
-			}
-			std::cout << "int: "<< literal << std::endl;
-			return ;
-		}
+		else
+			std::cout << "double: "<< doubleValue << std::endl;
 	}
 }
 
