@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 17:32:03 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:22:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,60 @@ ScalarConverter const & ScalarConverter::operator=(ScalarConverter const &rhs)
 		static int	check_param(const std::string str);
 
 */
-void	is_char(char c)
+void	ScalarConverter::is_char(char c)
 {
-	if (!std::isdigit(c) && c >= 32 && c <= 126)
-		std::cout << "char: '" << c << "'" << std::endl;
-	else
-		std::cerr << "char: Non displayable" << std::endl;
+	"f."
+	"."
+	std::cout << "Value in char : '" << c << "'" << std::endl;
+	std::cout << "Value in int : " <<static_cast<int>(c) << std::endl;
+	// Value in float : 
+	// Value in double : 
+}
+
+void	ScalarConverter::is_int(long int nb)
+{
+	if (nb> INT_MAX || nb < INT_MIN)
+	{
+		std::cerr << "Value not authorized" << std::endl;			
+		return ;
+	}
+	if (std::isdigit(nb))
+	{
+		std::cout << "int: "<< nb << std::endl;
+	}
+	// if (std::isdigit(i) || (literal[0] == '-') || (literal[0] == '+'))
+	// {
+	// 	bool valueNoInt;
+	// 	int	value;
+
+	// 	value = 0;
+	// 	valueNoInt = 0;
+	// 	for(int i = 0; literal[i]; i++)
+	// 	{
+	// 		if (!std::isdigit(literal[i]))
+	// 		{
+	// 			valueNoInt = 1;
+	// 			break;
+	// 		}
+	// 	}
+	// 	if (valueNoInt == 0)
+	// 	{
+	// 		value = atoi(literal.c_str());
+	// 		if (value > 2147483647 || value < -2147483648)
+	// 		{
+	// 			std::cerr << "Value not authorized" << std::endl;			
+	// 			return ;
+	// 		}
+	// 		std::cout << "int: "<< literal << std::endl;
+	// 	}
+}
+
+void ScalarConverter::is_nan()
+{
+	std::cout << "Value in char :		Impossible." << std::endl;
+	std::cout << "Value in int :		Impossible." << std::endl;
+	std::cout << "Value in float :	nanf." << std::endl;
+	std::cout << "Value in double :	nan." << std::endl;
 }
 
 void ScalarConverter::convert(std::string const &literal)
@@ -80,33 +128,6 @@ void ScalarConverter::convert(std::string const &literal)
 	// 	std::cout << "double: "<< "0.0f" << std::endl;
 	// }
 	//std::cout << "double: "<< doubleValue << std::endl;
-	/*c'est un int ?*/
-	if (std::isdigit(literal[0]) || (literal[0] == '-') || (literal[0] == '+'))
-	{
-		bool valueNoInt;
-		int	value;
-
-		value = 0;
-		valueNoInt = 0;
-		for(int i = 0; literal[i]; i++)
-		{
-			if (!std::isdigit(literal[i]))
-			{
-				valueNoInt = 1;
-				break;
-			}
-		}
-		if (valueNoInt == 0)
-		{
-			value = atoi(literal.c_str());
-			if (value > 2147483647 || value < -2147483648)
-			{
-				std::cerr << "Value not authorized" << std::endl;			
-				return ;
-			}
-			std::cout << "int: "<< literal << std::endl;
-		}
-	}
 	/*c'est un float ?*/
 	if ((literal[0] == '0') ||
 			(literal[literal.size() - 1] == 'f' && 
