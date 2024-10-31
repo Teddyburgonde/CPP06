@@ -6,16 +6,11 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/31 19:11:10 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:17:14 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-// string 
-// le bon type
-// cast
 #include "ScalarConverter.hpp"
-
 
 ScalarConverter::ScalarConverter(){}
 
@@ -80,7 +75,7 @@ void	ScalarConverter::is_double(double d)
 	if (d < static_cast<float>(INT_MIN)>(d) || d > static_cast<float>(INT_MAX)>(d))
 		std::cout << "Value in int :		impossible" << std::endl;
 	else
-	 	std::cout << "Value in int : "<< static_cast<int>(d) << std::endl;
+	 	std::cout << "Value in int :          "<< static_cast<int>(d) << std::endl;
 	std::cout << "Value in float :	"<< static_cast<float>(d) << "f" << std::endl;
 	std::cout << "Value in double :	"<< d << std::endl;
 }

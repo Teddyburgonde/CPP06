@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/31 18:12:43 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:16:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define INT_MIN -2147483648
 
 #include <iostream>
-#include <stdlib.h>
 
 class ScalarConverter
 {
