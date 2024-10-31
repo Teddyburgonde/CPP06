@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
+/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/30 20:11:22 by teddybandam      ###   ########.fr       */
+/*   Updated: 2024/10/31 11:50:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // le bon type
 // cast
 #include "ScalarConverter.hpp"
+#include <cctype>
 
 ScalarConverter::ScalarConverter(){}
 
@@ -50,45 +51,46 @@ void	ScalarConverter::is_char(char c)
 
 void	ScalarConverter::is_int(long int nb)
 {
-	// char
-	// int 
-	// float 
-	// double
 	if (nb > INT_MAX || nb < INT_MIN)
 	{
-		std::cerr << "Value in int :		Impossible." << std::endl;
+		std::cout << "Value in int :		Impossible." << std::endl;
 	}
-	else if (!std::isdigit(nb) || )
-	if (std::isdigit(nb))
+	else if (!std::isdigit(nb))
 	{
-		std::cout << "int: "<< nb << std::endl;
+		std::cout << "Value in char :		Impossible." << std::endl;
 	}
-	// if (std::isdigit(i) || (literal[0] == '-') || (literal[0] == '+'))
-	// {
-	// 	bool valueNoInt;
-	// 	int	value;
-
-	// 	value = 0;
-	// 	valueNoInt = 0;
-	// 	for(int i = 0; literal[i]; i++)
-	// 	{
-	// 		if (!std::isdigit(literal[i]))
-	// 		{
-	// 			valueNoInt = 1;
-	// 			break;
-	// 		}
-	// 	}
-	// 	if (valueNoInt == 0)
-	// 	{
-	// 		value = atoi(literal.c_str());
-	// 		if (value > 2147483647 || value < -2147483648)
-	// 		{
-	// 			std::cerr << "Value not authorized" << std::endl;			
-	// 			return ;
-	// 		}
-	// 		std::cout << "int: "<< literal << std::endl;
-	// 	}
+	else
+		std::cout << "Value in int : "<< nb << std::endl;
+	std::cout << "Value in float :	"<< static_cast<float>(nb) << "f." << std::endl;
+	std::cout << "Value in double :	"<< static_cast<double>(nb) << "." << std::endl;
 }
+
+void	is_float(float f)
+{
+	if (f < 0 && f > 127 || !std::isprint(f))
+		std::cerr << "Value in char :		Impossible." << std::endl;
+	else  
+		std::cout << "Value in char :		Impossible." << std::endl;
+	if (f < static_cast<float>(INT_MIN)>(f) || f > static_cast<float>(INT_MAX)>(f))
+		std::cout << "Value in int :		Impossible." << std::endl;
+	else
+		std::cout << "Value in int : "<< static_cast<int>(f) << std::endl;
+	std::cout << "Value in float :	"<< static_cast<float>(f) << "f." << std::endl;
+	std::cout << "Value in double :	"<< static_cast<double>(f) << "." << std::endl;
+}
+
+/*
+double 2.5`**- To do
+
+  Value in char :		Impossible.
+  Value in int :		2.
+  Value in float :	2.5f.
+  Value in double :	2.5.
+*/
+
+
+
+
 
 void ScalarConverter::is_nan()
 {
