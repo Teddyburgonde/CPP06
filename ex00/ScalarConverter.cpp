@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/31 11:50:21 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:01:12 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	is_float(float f)
 	if (f < 0 && f > 127 || !std::isprint(f))
 		std::cerr << "Value in char :		Impossible." << std::endl;
 	else  
-		std::cout << "Value in char :		Impossible." << std::endl;
+		std::cout << "Value in char :		Impossible." << std::endl; // ????
 	if (f < static_cast<float>(INT_MIN)>(f) || f > static_cast<float>(INT_MAX)>(f))
 		std::cout << "Value in int :		Impossible." << std::endl;
 	else
@@ -78,19 +78,17 @@ void	is_float(float f)
 	std::cout << "Value in float :	"<< static_cast<float>(f) << "f." << std::endl;
 	std::cout << "Value in double :	"<< static_cast<double>(f) << "." << std::endl;
 }
-
-/*
-double 2.5`**- To do
-
-  Value in char :		Impossible.
-  Value in int :		2.
-  Value in float :	2.5f.
-  Value in double :	2.5.
-*/
-
-
-
-
+void	is_double(double d)
+{
+	if (d < 0 && d > 127 || !std::isprint(d))
+		std::cout << "Value in char :		Impossible." << std::endl;
+	if (d < static_cast<float>(INT_MIN)>(d) || d > static_cast<float>(INT_MAX)>(d))
+		std::cout << "Value in int :		Impossible." << std::endl;
+	else
+	 	std::cout << "Value in int : "<< static_cast<int>(d) << std::endl;
+	std::cout << "Value in float :	"<< static_cast<float>(d) << "f." << std::endl;
+	std::cout << "Value in double :	"<< d << "." << std::endl;
+}
 
 void ScalarConverter::is_nan()
 {
@@ -99,6 +97,7 @@ void ScalarConverter::is_nan()
 	std::cout << "Value in float :	nanf." << std::endl;
 	std::cout << "Value in double :	nan." << std::endl;
 }
+
 
 void ScalarConverter::convert(std::string const &literal)
 {
