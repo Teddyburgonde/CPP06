@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/31 19:16:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:34:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,21 @@ class ScalarConverter
 		ScalarConverter const &operator=(ScalarConverter const &rhs);
 		~ScalarConverter();
 
-	public: /*method*/
-		static void convert(std::string const &literal);
+	public: /*method convert*/
+		static void convert(std::string const &input);
 	
-	public:
-		static void	is_char(char c);
-		static void	is_int(long int nb);
-		static void	is_nan();
-		static void	is_float(float f);
-		static void	is_double(double d);
+	public: /*method type*/
+		static bool is_char(std::string const &input);
+		static bool is_int(std::string const &input);
+		static bool is_float(std::string const &input);
+		static bool is_double(std::string const &input);
+
+	public: /*Display methods*/
+		static void	display_char_message(char c);
+		static void	display_int_message(long int nb);
+		static void	display_float_message(float f);
+		static void	display_double_message(double d);
+		static void	display_nan_message();
 
 };
 

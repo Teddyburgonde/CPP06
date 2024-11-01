@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:25:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/10/31 19:17:14 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:55:16 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,135 @@ ScalarConverter::ScalarConverter(ScalarConverter const &cpy)
 ScalarConverter const & ScalarConverter::operator=(ScalarConverter const &rhs)
 {
 	(void)rhs;
-    return (*this);
+    return *this;
 }
 /*
 		static void	is_inf(std::string str);
-		static int	check_param(const std::string str);
 
 */
-void	ScalarConverter::is_char(char c)
+
+
+void ScalarConverter::convert(std::string const &input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i])
+	{
+		if (ScalarConverter::is_char(input))
+		{
+			ScalarConverter::display_char_message(input[i]);
+			break; 
+		}
+		else if (ScalarConverter::is_int(input))
+		{
+			std::cout << "IS_INT , value de input: " << input[i] << std::endl;
+			ScalarConverter::display_int_message(input[i]);
+			break; 
+		}
+		else if (ScalarConverter::is_float(input))
+		{
+			
+			ScalarConverter::display_float_message(input[i]);
+			break; 
+		}
+		else if (ScalarConverter::is_double(input))
+		{
+			ScalarConverter::display_double_message(input[i]);
+			break;
+		}
+		i++;
+	}
+}
+
+
+
+
+
+
+/* Functions detection type */
+bool ScalarConverter::is_char(std::string const &input)
+{
+	if (input.size() == 1 && std::isprint(input[0]))
+		return true;
+	return false;
+}
+
+bool ScalarConverter::is_int(std::string const &input)
+{
+	int	i;
+
+	if (input.empty()) 
+	    return false;
+	i = 0;
+	if (input[0] == '+' || input[0] == '-')
+		i = 1;
+	while (input[i])
+	{
+		if (!isdigit(input[i]))
+			return false;
+		i++;
+	}
+	return true;
+}
+
+bool ScalarConverter::is_float(std::string const &input)
+{
+	unsigned long	i;
+	int	dot;
+
+	dot = 0;
+	i = 0;
+	if (input.empty() || input[input.size() - 1] != 'f')
+		return false;
+	if (input[0] == '+' || input[0] == '-')
+		i = 1;
+	for (; i < input.size()- 1; i++)
+	{
+		if (input[i] == '.')
+		{
+			dot++;
+			if (dot > 1)
+				return false;
+		}
+		else if (!isdigit(input[i]))
+			return false;
+	}
+	if (dot == 1)
+		return true;
+	return false;
+}
+
+bool ScalarConverter::is_double(std::string const &input)
+{
+	unsigned long	i;
+	int	dot;
+
+	dot = 0;
+	i = 0;
+	if (input.empty())
+		return false;
+	if (input[0] == '+' || input[0] == '-')
+		i = 1;
+	for (; i < input.size(); i++)
+	{
+		if (input[i] == '.')
+		{
+			dot++;
+			if (dot > 1)
+				return false;
+		}
+		else if (!isdigit(input[i]))
+			return false;
+	}
+	if (dot == 1)
+		return true;
+	return false;
+}
+
+/* Functions display */
+
+void	ScalarConverter::display_char_message(char c)
 {
 	std::cout << "Value in char : '" << c << "'" << std::endl;
 	std::cout << "Value in int : " <<static_cast<int>(c) << std::endl;
@@ -39,22 +160,19 @@ void	ScalarConverter::is_char(char c)
 	std::cout << "Value in double " <<static_cast<double>(c) << ".0" << std::endl;
 }
 
-void	ScalarConverter::is_int(long int nb)
+void	ScalarConverter::display_int_message(long int nb)
 {
 	if (nb > INT_MAX || nb < INT_MIN)
-	{
 		std::cout << "Value in int :		impossible" << std::endl;
-	}
 	else if (!std::isdigit(nb))
-	{
 		std::cout << "Value in char :		impossible" << std::endl;
-	}
+	std::cout << "Value in char :		impossible" << std::endl;
 	std::cout << "Value in int :          "<< nb << std::endl;
 	std::cout << "Value in float :	"<< static_cast<float>(nb) << "f" << std::endl;
 	std::cout << "Value in double :	"<< static_cast<double>(nb) << ".0" << std::endl;
 }
 
-void	ScalarConverter::is_float(float f)
+void	ScalarConverter::display_float_message(float f)
 {
 	if ((f < 0 && f > 127) || !std::isprint(f))
 		std::cerr << "Value in char :		impossible" << std::endl;
@@ -68,7 +186,7 @@ void	ScalarConverter::is_float(float f)
 	std::cout << "Value in double :	"<< static_cast<double>(f) << ".0" << std::endl;
 }
 
-void	ScalarConverter::is_double(double d)
+void	ScalarConverter::display_double_message(double d)
 {
 	if ((d < 0 && d > 127) || !std::isprint(d))
 		std::cout << "Value in char :		impossible" << std::endl;
@@ -80,7 +198,7 @@ void	ScalarConverter::is_double(double d)
 	std::cout << "Value in double :	"<< d << std::endl;
 }
 
-void ScalarConverter::is_nan()
+void ScalarConverter::display_nan_message()
 {
 	std::cout << "Value in char :		impossible." << std::endl;
 	std::cout << "Value in int :		impossible." << std::endl;
