@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/01 12:34:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:46:50 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define INT_MIN -2147483648
 
 #include <iostream>
+#include <cstdlib>
 
 class ScalarConverter
 {
@@ -41,7 +42,8 @@ class ScalarConverter
 		static void	display_float_message(float f);
 		static void	display_double_message(double d);
 		static void	display_nan_message();
-
+		static void display_p_inf_message();
+		static void display_n_inf_message();
 };
 
 #endif 
