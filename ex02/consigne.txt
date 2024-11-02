@@ -1,0 +1,27 @@
+Implémente une classe de base Base qui ne contient qu'un destructeur virtuel public.
+
+
+
+
+
+
+
+
+
+ Crée trois classes vides A, B et C qui héritent publiquement de Base. Ces quatre classes n’ont pas besoin de suivre la forme canonique orthodoxe.
+
+Implémente les fonctions suivantes :
+
+    Base * generate(void);
+    Cette fonction instancie aléatoirement A, B ou C et retourne l'instance comme un pointeur vers Base. Tu es libre d'utiliser la méthode de ton choix pour l'implémentation de la sélection aléatoire.
+
+    void identify(Base* p);
+    Cette fonction affiche le type réel de l'objet pointé par p : A, B ou C.
+
+    void identify(Base& p);
+    Cette fonction affiche le type réel de l'objet pointé par p : A, B ou C. Utiliser un pointeur dans cette fonction est interdit.
+
+Remarques :
+
+    Il est interdit d'inclure l'en-tête typeinfo.
+    Écris un programme pour vérifier que tout fonctionne comme prévu. 
