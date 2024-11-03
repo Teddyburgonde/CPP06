@@ -1,19 +1,23 @@
 Implémente une classe de base Base qui ne contient qu'un destructeur virtuel public.
+ Crée trois classes vides A, B et C qui héritent publiquement de Base. Ces quatre classes n’ont pas besoin de suivre la forme canonique orthodoxe
 
 
 
+https://www.quora.com/How-do-you-create-and-call-member-functions-of-another-class-in-C
 
-
-
-
-
-
- Crée trois classes vides A, B et C qui héritent publiquement de Base. Ces quatre classes n’ont pas besoin de suivre la forme canonique orthodoxe.
+https://stackoverflow.com/questions/13249023/how-do-i-instantiate-an-object-inside-of-a-c-class
 
 Implémente les fonctions suivantes :
 
     Base * generate(void);
-    Cette fonction instancie aléatoirement A, B ou C et retourne l'instance comme un pointeur vers Base. Tu es libre d'utiliser la méthode de ton choix pour l'implémentation de la sélection aléatoire.
+
+
+    Cette fonction instancie aléatoirement A, B ou C 
+
+
+
+
+et retourne l'instance comme un pointeur vers Base. Tu es libre d'utiliser la méthode de ton choix pour l'implémentation de la sélection aléatoire.
 
     void identify(Base* p);
     Cette fonction affiche le type réel de l'objet pointé par p : A, B ou C.

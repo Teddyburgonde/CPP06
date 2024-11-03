@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.cpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 13:09:15 by teddybandam       #+#    #+#             */
-/*   Updated: 2024/11/03 07:48:53 by teddybandam      ###   ########.fr       */
+/*   Created: 2024/11/03 07:17:11 by teddybandam       #+#    #+#             */
+/*   Updated: 2024/11/03 07:17:17 by teddybandam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-Base::~Base(){}
-
-Base *Base::generate(void)
+class C : public Base
 {
     
-    //return ?;
-}
-
-void Base::identify(Base* p)
-{
-}
-void Base::identify(Base& p)
-{
-    BASE& dynamic_cast<BASE&> (P);
-}
+};
