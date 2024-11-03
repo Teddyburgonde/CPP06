@@ -21,9 +21,20 @@ OBJS = $(SRCS:.cpp=.o)
 
 #==========GENERATION BINARY FILES ==========#
 
+BAR_LENGTH := 80
+TOTAL_FILES := $(words $(SRCS))
+PAUSE_DURATION := 0.70
 %.o : %.cpp
-	$(CPP) $(CFLAGS) -c $< -o $@
-
+	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@$(eval PROGRESS_PERCENT := $(shell echo $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))))
+	@$(eval FILLED_BAR_LENGTH := $(shell echo $$(($(PROGRESS_PERCENT) * $(BAR_LENGTH) / 100))))
+	@printf "\rCompiling [\033[0;32m"
+	@for i in $(shell seq 1 $(FILLED_BAR_LENGTH)); do printf "◦"; done
+	@printf "🟡"
+	@for i in $(shell seq 1 $(shell echo $$(($(BAR_LENGTH) - $(FILLED_BAR_LENGTH))))); do printf "•"; done
+	@printf "\033[0m] $(PROGRESS_PERCENT)%%"
+	@$(CPP) $(CFLAGS) -c $< -o $@
+	@sleep $(PAUSE_DURATION)
 
 #================= COLORS ===================#
 
@@ -37,7 +48,8 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CPP) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CPP) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo
 	@echo "$(GREEN) EXECUTABLE READY !$(RESET)"
 
 clean: 

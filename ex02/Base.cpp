@@ -3,27 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
+/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:09:15 by teddybandam       #+#    #+#             */
-/*   Updated: 2024/11/03 07:48:53 by teddybandam      ###   ########.fr       */
+/*   Updated: 2024/11/03 10:48:43 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
 Base::~Base(){}
-
-Base *Base::generate(void)
-{
-    
-    //return ?;
-}
-
-void Base::identify(Base* p)
-{
-}
-void Base::identify(Base& p)
-{
-    BASE& dynamic_cast<BASE&> (P);
-}
