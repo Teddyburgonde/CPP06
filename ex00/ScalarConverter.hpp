@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:13:01 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/01 15:46:50 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/10 14:40:39 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,13 @@
 
 class ScalarConverter
 {
-	public: /*canonical form*/
-		ScalarConverter();
-		ScalarConverter(ScalarConverter const &cpy);
-		ScalarConverter const &operator=(ScalarConverter const &rhs);
+	public: /* Destructor */
 		~ScalarConverter();
 
-	public: /*method convert*/
+	public: /* Method convert */
 		static void convert(std::string const &input);
 	
-	public: /*method type*/
+	public: /* Method type */
 		static bool is_char(std::string const &input);
 		static bool is_int(std::string const &input);
 		static bool is_float(std::string const &input);
@@ -44,6 +41,11 @@ class ScalarConverter
 		static void	display_nan_message();
 		static void display_p_inf_message();
 		static void display_n_inf_message();
+
+	private: /* Canonical form not instanciable */
+		ScalarConverter();
+		ScalarConverter(ScalarConverter const &cpy);
+		ScalarConverter const &operator=(ScalarConverter const &rhs);
 };
 
 #endif 

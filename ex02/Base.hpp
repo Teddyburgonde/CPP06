@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:09:20 by teddybandam       #+#    #+#             */
-/*   Updated: 2024/11/03 11:04:58 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:16:56 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@
 
 class Base
 {
-    public: 
-        virtual ~Base();
     public:
-    private: 
-        class A; class B; class C;
+        virtual ~Base();
 };
+
+/* Method */
 Base *generate(void);
 void identify(Base* p);
 void identify(Base& p);
 
 
-#endif 
+#endif

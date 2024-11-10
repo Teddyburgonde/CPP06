@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 09:11:43 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/02 11:42:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:02:04 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main()
 	uintptr_t serializez;
 
 	data.nb = 10;
-	data.str = "salut";
+	data.str = "hello";
 
 	
 	serializez = Serializer::serialize(&data);

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:44:52 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/02 11:43:32 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:35:06 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Serializer
 		Serializer(Serializer const &cpy);
 		Serializer & operator=(Serializer const &rhs);
 
-	public:
+	public: 
 		static uintptr_t serialize(t_data* ptr);
 		static t_data* deserialize(uintptr_t raw);
 

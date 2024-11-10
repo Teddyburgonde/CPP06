@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 10:48:49 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/03 11:52:04 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:07:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ Base *generate(void)
 
 void identify(Base* p)
 {
-	if (p == NULL) 
+	if (p == NULL)
 	{
-        std::cout << "Null pointer received" << std::endl;
+        std::cerr << "Null pointer received" << std::endl;
         return;
     }
 	if (dynamic_cast<A*>(p))

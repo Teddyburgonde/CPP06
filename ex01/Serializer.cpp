@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:44:04 by tebandam          #+#    #+#             */
-/*   Updated: 2024/11/02 11:42:16 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:19:11 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ Serializer::Serializer(Serializer const &cpy)
 
 Serializer & Serializer::operator=(Serializer const &rhs)
 {
-	if (this != &rhs)
-	{
-		
-	} 
+	(void)rhs;
 	return (*this);
 }	
 
